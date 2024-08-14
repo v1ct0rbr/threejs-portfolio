@@ -1,7 +1,7 @@
-import RouterLink from 'next/link';
 import { forwardRef } from 'react';
 import { classes } from 'utils/style';
 import styles from './Link.module.css';
+import Link from 'next/link';
 
 // File extensions that can be linked to
 const VALID_EXT = ['txt', 'png', 'jpg'];
@@ -11,15 +11,15 @@ function isAnchor(href) {
   return href?.includes('://') || href?.[0] === '#' || isValidExtension;
 }
 
-export const Link = forwardRef(({ href, ...rest }, ref) => {
+export const Link2 = forwardRef(({ href, ...rest }, ref) => {
   if (isAnchor(href)) {
     return <LinkContent href={href} ref={ref} {...rest} />;
   }
 
   return (
-    <RouterLink passHref href={href} scroll={false}>
+    
       <LinkContent ref={ref} {...rest} />
-    </RouterLink>
+    
   );
 });
 
@@ -30,17 +30,17 @@ export const LinkContent = forwardRef(
     const targetValue = target || (isExternal ? '_blank' : undefined);
 
     return (
-      <a
+      <Link passHref href={href} scroll={false}
         className={classes(styles.link, className)}
         data-secondary={secondary}
         rel={relValue}
-        href={href}
+       
         target={targetValue}
         ref={ref}
         {...rest}
       >
         {children}
-      </a>
+      </Link>
     );
   }
 );

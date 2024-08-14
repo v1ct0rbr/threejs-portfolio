@@ -5,7 +5,7 @@ import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
 import { Heading } from 'components/Heading';
 import { Image } from 'components/Image';
-import { Link } from 'components/Link';
+import { Link2 } from 'components/Link';
 import { Section } from 'components/Section';
 import { Text } from 'components/Text';
 import { Transition } from 'components/Transition';
@@ -21,7 +21,7 @@ const ProfileText = ({ visible, titleId }) => (
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       I&apos;m Mayank, currently enrolled at{' '}
-      <Link href="https://kiit.ac.in">KIIT University</Link> to pursue an engineering
+      <Link2 href="https://kiit.ac.in">KIIT University</Link2> to pursue an engineering
       degree in Information Technology. My area of expertise in web development is the
       MERN stack. As a self-taught developer, I&apos;m constantly searching for ways to
       improve. I pick things up quickly, and I&apos;m constantly eager to learn something
@@ -30,13 +30,13 @@ const ProfileText = ({ visible, titleId }) => (
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       I am a member of the{' '}
-      <Link href="https://msckiit.tech">
+      <Link2 href="https://msckiit.tech">
         Microsoft Learn Student Ambassadors, KIIT Chapter
-      </Link>{' '}
+      </Link2>{' '}
       as a{' '}
       <span style={{ fontWeight: 'bold' }}>Creative Lead and Operations Executive</span>{' '}
       and <span style={{ fontWeight: 'bold' }}>Senior Executive</span> at the{' '}
-      <Link href="https://ecell.org.in">KIIT Entrepreneurship Cell</Link>. I&apos;ve
+      <Link2 href="https://ecell.org.in">KIIT Entrepreneurship Cell</Link2>. I&apos;ve
       helped organised several events having a cumulative footfall of more than 3000+
       people, and have the experience of managing a team of 100+ members as well.
     </Text>

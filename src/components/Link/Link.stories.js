@@ -1,4 +1,4 @@
-import { Link } from 'components/Link';
+import { Link2 } from 'components/Link';
 import { StoryContainer } from '../../../.storybook/StoryContainer';
 
 export default {
@@ -7,9 +7,9 @@ export default {
 
 export const Default = () => (
   <StoryContainer style={{ fontSize: 18 }}>
-    <Link href="https://hamishw.com">Primary link</Link>
-    <Link secondary href="https://hamishw.com">
+    <Link2 href="https://hamishw.com">Primary link</Link2>
+    <Link2 secondary href="https://hamishw.com">
       Secondary link
-    </Link>
+    </Link2>
   </StoryContainer>
 );

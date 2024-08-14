@@ -9,10 +9,10 @@ import { VisuallyHidden } from 'components/VisuallyHidden';
 import { AnimatePresence } from 'framer-motion';
 import { useInterval, usePrevious, useScrollToHash } from 'hooks';
 import dynamic from 'next/dynamic';
-import RouterLink from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 import { cssProps } from 'utils/style';
 import styles from './Intro.module.css';
+import Link from 'next/link';
 
 const DisplacementSphere = dynamic(() =>
   import('layouts/Home/DisplacementSphere').then(mod => mod.DisplacementSphere)
@@ -107,18 +107,17 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
                 </div>
               </Heading>
             </header>
-            <RouterLink href="/#project-1">
-              <a
-                className={styles.scrollIndicator}
+            <Link href="/#project-1"
+                       className={styles.scrollIndicator}
                 data-status={status}
                 data-hidden={scrollIndicatorHidden}
                 onClick={handleScrollClick}
               >
                 <VisuallyHidden>Scroll to projects</VisuallyHidden>
-              </a>
-            </RouterLink>
-            <RouterLink href="/#project-1">
-              <a
+              
+            </Link>
+            <Link href="/#project-1"
+              
                 className={styles.mobileScrollIndicator}
                 data-status={status}
                 data-hidden={scrollIndicatorHidden}
@@ -126,8 +125,8 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
               >
                 <VisuallyHidden>Scroll to projects</VisuallyHidden>
                 <ArrowDown aria-hidden />
-              </a>
-            </RouterLink>
+             
+            </Link>
           </Fragment>
         )}
       </Transition>

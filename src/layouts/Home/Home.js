@@ -70,7 +70,7 @@ export const Home = () => {
   }, [visibleSections]);
 
   return (
-    <div className={styles.home}>
+    <div className={styles.home} >
       <Meta
         title="Designer + Developer"
         description="Design portfolio of Mayank Jain — a product designer working on web & mobile

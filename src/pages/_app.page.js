@@ -58,10 +58,10 @@ const App = ({ Component, pageProps }) => {
   }, [storedTheme]);
 
   return (
-    <AppContext.Provider value={{ ...state, dispatch }}>
+    <AppContext.Provider value={{ ...state, dispatch }} >
       <ThemeProvider themeId={state.theme}>
-        <LazyMotion features={domAnimation}>
-          <Fragment>
+        <LazyMotion features={domAnimation} >
+          <Fragment >
             <Head>
               <link
                 rel="canonical"
@@ -77,7 +77,7 @@ const App = ({ Component, pageProps }) => {
               Skip to main content
             </VisuallyHidden>
             <Navbar />
-            <main className={styles.app} tabIndex={-1} id="MainContent">
+            <main className={styles.app} tabIndex={-1} id="MainContent" >
               <AnimatePresence exitBeforeEnter>
                 <m.div
                   key={route}

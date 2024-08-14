@@ -1,17 +1,18 @@
 import { Code } from 'components/Code';
 import { Heading } from 'components/Heading';
 import { Icon } from 'components/Icon';
-import { Link } from 'components/Link';
+import { Link2 } from 'components/Link';
 import { List, ListItem } from 'components/List';
 import { Text } from 'components/Text';
 import { Children } from 'react';
 import styles from './PostMarkdown.module.css';
+import Link from 'next/link';
 
 const PostHeadingLink = ({ id }) => {
   return (
-    <a className={styles.headingLink} href={`#${id}`} aria-label="Link to heading">
+    <Link className={styles.headingLink} href={`#${id}`} aria-label="Link to heading">
       <Icon icon="link" />
-    </a>
+    </Link>
   );
 };
 
@@ -59,7 +60,7 @@ const PostParagraph = ({ children, ...rest }) => {
   );
 };
 
-const PostLink = ({ ...props }) => <Link {...props} />;
+const PostLink = ({ ...props }) => <Link2 {...props} />;
 
 const PostUl = props => {
   return <List className={styles.list} {...props} />;

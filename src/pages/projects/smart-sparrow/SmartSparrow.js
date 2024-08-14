@@ -45,7 +45,7 @@ import imageSprStoryboarderLightPlaceholder from 'assets/spr-storyboarder-light-
 import imageSprStoryboarderLight from 'assets/spr-storyboarder-light.png';
 import { Footer } from 'components/Footer';
 import { Image } from 'components/Image';
-import { Link } from 'components/Link';
+import { Link2 } from 'components/Link';
 import { Meta } from 'components/Meta';
 import { SegmentedControl, SegmentedControlOption } from 'components/SegmentedControl';
 import { ThemeProvider, useTheme } from 'components/ThemeProvider';
@@ -512,9 +512,9 @@ export const SmartSparrow = () => {
               <ProjectSectionText>
                 Ultimately the project was successful after Smart Sparrow and the aero
                 platform were{' '}
-                <Link href="https://www.prnewswire.com/news-releases/pearson-acquires-interactive-learning-technology-from-smart-sparrow-300987673.html">
+                <Link2 href="https://www.prnewswire.com/news-releases/pearson-acquires-interactive-learning-technology-from-smart-sparrow-300987673.html">
                   acquired by Pearson in 2020
-                </Link>{' '}
+                </Link2>{' '}
                 to become a foundation for their next generation learning platform.
               </ProjectSectionText>
             </ProjectTextRow>

@@ -4,7 +4,6 @@ import { useTheme } from 'components/ThemeProvider';
 import { tokens } from 'components/ThemeProvider/theme';
 import { Transition } from 'components/Transition';
 import { useAppContext, useScrollToHash, useWindowSize } from 'hooks';
-import RouterLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { cssProps, media, msToNum, numToMs } from 'utils/style';
@@ -12,6 +11,7 @@ import { NavToggle } from './NavToggle';
 import styles from './Navbar.module.css';
 import { ThemeToggle } from './ThemeToggle';
 import { navLinks, socialLinks } from './navData';
+import Link from 'next/link';
 
 export const Navbar = () => {
   const [current, setCurrent] = useState();
@@ -141,30 +141,30 @@ export const Navbar = () => {
 
   return (
     <header className={styles.navbar} ref={headerRef}>
-      <RouterLink href={route === '/' ? '/#intro' : '/'} scroll={false}>
-        <a
+      <Link href={route === '/' ? '/#intro' : '/'} scroll={false}
+        
           data-navbar-item
           className={styles.logo}
           aria-label="Mayank Jain, Designer"
           onClick={handleMobileNavClick}
         >
           <Monogram highlight />
-        </a>
-      </RouterLink>
+        
+      </Link>
       <NavToggle onClick={() => dispatch({ type: 'toggleMenu' })} menuOpen={menuOpen} />
       <nav className={styles.nav}>
         <div className={styles.navList}>
           {navLinks.map(({ label, pathname }) => (
-            <RouterLink href={pathname} scroll={false} key={label}>
-              <a
+            <Link href={pathname} scroll={false} key={label}
+              
                 data-navbar-item
                 className={styles.navLink}
                 aria-current={getCurrent(pathname)}
-                onClick={handleNavItemClick}
-              >
+                onClick={handleNavItemClick}>
+              
                 {label}
-              </a>
-            </RouterLink>
+              
+            </Link>
           ))}
         </div>
         <NavbarIcons desktop />
@@ -173,8 +173,8 @@ export const Navbar = () => {
         {visible => (
           <nav className={styles.mobileNav} data-visible={visible}>
             {navLinks.map(({ label, pathname }, index) => (
-              <RouterLink href={pathname} scroll={false} key={label}>
-                <a
+              <Link href={pathname} scroll={false} key={label}
+                
                   className={styles.mobileNavLink}
                   data-visible={visible}
                   aria-current={getCurrent(pathname)}
@@ -186,8 +186,8 @@ export const Navbar = () => {
                   })}
                 >
                   {label}
-                </a>
-              </RouterLink>
+                
+              </Link>
             ))}
             <NavbarIcons />
             <ThemeToggle isMobile />
@@ -202,7 +202,7 @@ export const Navbar = () => {
 const NavbarIcons = ({ desktop }) => (
   <div className={styles.navIcons}>
     {socialLinks.map(({ label, url, icon }) => (
-      <a
+      <Link
         key={label}
         data-navbar-item={desktop || undefined}
         className={styles.navIconLink}
@@ -212,7 +212,7 @@ const NavbarIcons = ({ desktop }) => (
         rel="noopener noreferrer"
       >
         <Icon className={styles.navIcon} icon={icon} />
-      </a>
+      </Link>
     ))}
   </div>
 );

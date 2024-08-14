@@ -5,7 +5,7 @@ import { Head, Html, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" >
       <Head>
         <meta charSet="utf-8" />
 
@@ -20,7 +20,7 @@ export default function Document() {
         <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
         <style dangerouslySetInnerHTML={{ __html: tokenStyles }} />
       </Head>
-      <body data-theme="dark" tabIndex={-1}>
+      <body data-theme="dark" tabIndex={-1} >
         <script
           dangerouslySetInnerHTML={{
             __html: `

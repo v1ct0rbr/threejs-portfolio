@@ -1,10 +1,11 @@
 import { Icon } from 'components/Icon';
 import { Loader } from 'components/Loader';
 import { Transition } from 'components/Transition';
-import RouterLink from 'next/link';
+
 import { forwardRef } from 'react';
 import { classes } from 'utils/style';
 import styles from './Button.module.css';
+import Link from 'next/link';
 
 function isExternalLink(href) {
   return href?.includes('://');
@@ -16,9 +17,9 @@ export const Button = forwardRef(({ href, ...rest }, ref) => {
   }
 
   return (
-    <RouterLink passHref href={href} scroll={false}>
+    <Link passHref href={href} scroll={false}>
       <ButtonContent href={href} ref={ref} {...rest} />
-    </RouterLink>
+    </Link>
   );
 });
 

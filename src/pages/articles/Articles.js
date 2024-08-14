@@ -10,11 +10,12 @@ import { Section } from 'components/Section';
 import { Text } from 'components/Text';
 import { useReducedMotion } from 'framer-motion';
 import { useWindowSize } from 'hooks';
-import RouterLink from 'next/link';
+
 import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
 import styles from './Articles.module.css';
+import Link from 'next/link';
 
 const ArticlesPost = ({
   slug,
@@ -65,8 +66,7 @@ const ArticlesPost = ({
           />
         </div>
       )}
-      <RouterLink href={`/articles/${slug}`} scroll={false}>
-        <a
+      <Link href={`/articles/${slug}`} scroll={false}
           className={styles.postLink}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -91,8 +91,8 @@ const ArticlesPost = ({
               </Text>
             </div>
           </div>
-        </a>
-      </RouterLink>
+        
+      </Link>
       {featured && (
         <Text aria-hidden className={styles.postTag} size="s">
           477
