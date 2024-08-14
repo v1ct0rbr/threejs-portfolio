@@ -18,7 +18,7 @@ import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
 import { Profile } from 'layouts/Home/Profile';
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 
 const disciplines = ['Student', 'Learner'];
@@ -33,7 +33,7 @@ export const Home = () => {
   const projectFour = useRef();
   const details = useRef();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
 
     const sectionObserver = new IntersectionObserver(
