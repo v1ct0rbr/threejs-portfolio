@@ -1,12 +1,14 @@
+import { useReducedMotion } from 'framer-motion';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { Button } from 'components/Button';
 import { Icon } from 'components/Icon';
-import { useTheme } from 'components/ThemeProvider';
-import { useReducedMotion } from 'framer-motion';
+
 import { useHasMounted, useInViewport } from 'hooks';
-import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { resolveSrcFromSrcSet, srcSetToString } from 'utils/image';
 import { classes, cssProps, numToMs } from 'utils/style';
-import styles from './Image.module.css';
+import { MySkeleton} from '../skeleton/MySkeleton';
+import styles from './image.module.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const Image = ({
   className,
@@ -16,17 +18,18 @@ export const Image = ({
   raised,
   src: baseSrc,
   srcSet,
-  placeholder,
+  
   ...rest
 }) => {
   const [loaded, setLoaded] = useState(false);
-  const { themeId } = useTheme();
+
   const containerRef = useRef();
   const src = baseSrc || srcSet?.[0];
   const inViewport = useInViewport(containerRef, !getIsVideo(src));
 
   const onLoad = useCallback(() => {
     setLoaded(true);
+    
   }, []);
 
   return (
@@ -35,7 +38,7 @@ export const Image = ({
       data-visible={inViewport || loaded}
       data-reveal={reveal}
       data-raised={raised}
-      data-theme={themeId}
+      
       style={cssProps({ delay: numToMs(delay) }, style)}
       ref={containerRef}
     >
@@ -47,7 +50,7 @@ export const Image = ({
         reveal={reveal}
         src={src}
         srcSet={srcSet}
-        placeholder={placeholder}
+        
         {...rest}
       />
     </div>
@@ -59,7 +62,6 @@ const ImageElements = ({
   loaded,
   inViewport,
   srcSet,
-  placeholder,
   delay,
   src,
   alt,
@@ -67,7 +69,10 @@ const ImageElements = ({
   restartOnPause,
   reveal,
   sizes,
+  width,
+  height,
   noPauseButton,
+  cover,
   ...rest
 }) => {
   const reduceMotion = useReducedMotion();
@@ -91,7 +96,7 @@ const ImageElements = ({
     if (isVideo && srcSet) {
       resolveVideoSrc();
     } else if (isVideo) {
-      setVideoSrc(src.src);
+      setVideoSrc(src);
     }
   }, [isVideo, sizes, src, srcSet]);
 
@@ -146,6 +151,7 @@ const ImageElements = ({
       data-visible={inViewport || loaded}
       style={cssProps({ delay: numToMs(delay + 1000) })}
     >
+      
       {isVideo && hasMounted && (
         <Fragment>
           <video
@@ -154,12 +160,14 @@ const ImageElements = ({
             playsInline
             className={styles.element}
             data-loaded={loaded}
+            data-cover={cover}
             autoPlay={!reduceMotion}
-            role="img"
             onLoadStart={onLoad}
             src={videoSrc}
             aria-label={alt}
             ref={videoRef}
+            style={{display: 'none'}}
+            onLoadedData={(e) => { setShowPlaceholder(false); e.currentTarget.style.display = 'block';}}
             {...rest}
           />
           {!noPauseButton && (
@@ -170,41 +178,63 @@ const ImageElements = ({
           )}
         </Fragment>
       )}
+      {showPlaceholder && (
+         /*  <img
+           aria-hidden
+           className={styles.placeholder}
+           data-loaded={loaded}
+           data-cover={cover}
+           style={cssProps({ delay: numToMs(delay) })}
+           ref={placeholderRef}
+           src={placeholder}
+           width={width}
+           height={height}
+           onTransitionEnd={() => setShowPlaceholder(false)}
+           decoding="async"
+           loading="lazy"
+           alt=""
+           role="presentation"
+         />  */
+       
+         <MySkeleton ref={placeholderRef} styles={styles.placeholder}   />
+      )}
+      
       {!isVideo && (
         <img
           className={styles.element}
           data-loaded={loaded}
-          onLoad={onLoad}
+          data-cover={cover}
+          style={cssProps({ delay: numToMs(delay) })}
           decoding="async"
           src={showFullRes ? src.src : undefined}
           srcSet={showFullRes ? srcSetString : undefined}
-          width={src.width}
-          height={src.height}
+          width={width}
+          height={height}
           alt={alt}
           sizes={sizes}
+          loading="lazy"
+          onTransitionEnd={() => setShowPlaceholder(false)}
+          onLoad={(e) => {
+            onLoad(e); // Chamando onLoad original se existir
+            setShowPlaceholder(false);
+          }}
+          
+          
           {...rest}
         />
+        
       )}
-      {showPlaceholder && (
-        <img
-          aria-hidden
-          className={styles.placeholder}
-          data-loaded={loaded}
-          style={cssProps({ delay: numToMs(delay) })}
-          ref={placeholderRef}
-          src={placeholder.src}
-          width={placeholder.width}
-          height={placeholder.height}
-          onTransitionEnd={() => setShowPlaceholder(false)}
-          decoding="async"
-          alt=""
-          role="presentation"
-        />
-      )}
+        
+        
+      
+     
+      
+
     </div>
   );
 };
 
 function getIsVideo(src) {
-  return typeof src.src === 'string' && src.src.endsWith('.mp4');
+  return typeof src === 'string' && src.includes('.mp4');
 }
+

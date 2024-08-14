@@ -49,6 +49,7 @@
     "portfolio": "file:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.4.0",
     "serverless-http": "^3.0.2",
     "three": "^0.146.0",
     "three-stdlib": "^2.18.1"
