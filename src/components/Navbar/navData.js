@@ -27,7 +27,7 @@ export const socialLinks = [
   },
   {
     label: 'Linkedin',
-    url: 'https://www.linkedin.com/in/victor-oqueiroga',
+    url: 'https://www.linkedin.com/in/victor-queiroga',
     icon: 'linkedin',
   },
 ];
