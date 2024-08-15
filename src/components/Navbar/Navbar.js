@@ -141,29 +141,31 @@ export const Navbar = () => {
 
   return (
     <header className={styles.navbar} ref={headerRef}>
-      <Link href={route === '/' ? '/#intro' : '/'} scroll={false}
-        
-          data-navbar-item
-          className={styles.logo}
-          aria-label="Mayank Jain, Designer"
-          onClick={handleMobileNavClick}
-        >
-          <Monogram highlight />
-        
+      <Link
+        href={route === '/' ? '/#intro' : '/'}
+        scroll={false}
+        data-navbar-item
+        className={styles.logo}
+        aria-label="Mayank Jain, Designer"
+        onClick={handleMobileNavClick}
+      >
+        <Monogram highlight />
       </Link>
       <NavToggle onClick={() => dispatch({ type: 'toggleMenu' })} menuOpen={menuOpen} />
       <nav className={styles.nav}>
         <div className={styles.navList}>
-          {navLinks.map(({ label, pathname }) => (
-            <Link href={pathname} scroll={false} key={label}
-              
-                data-navbar-item
-                className={styles.navLink}
-                aria-current={getCurrent(pathname)}
-                onClick={handleNavItemClick}>
-              
-                {label}
-              
+          {navLinks.map(({ label, pathname, target }) => (
+            <Link
+              href={pathname}
+              scroll={false}
+              key={label}
+              target={target !== undefined ? target : undefined}
+              data-navbar-item
+              className={styles.navLink}
+              aria-current={getCurrent(pathname)}
+              onClick={handleNavItemClick}
+            >
+              {label}
             </Link>
           ))}
         </div>
@@ -173,20 +175,21 @@ export const Navbar = () => {
         {visible => (
           <nav className={styles.mobileNav} data-visible={visible}>
             {navLinks.map(({ label, pathname }, index) => (
-              <Link href={pathname} scroll={false} key={label}
-                
-                  className={styles.mobileNavLink}
-                  data-visible={visible}
-                  aria-current={getCurrent(pathname)}
-                  onClick={handleMobileNavClick}
-                  style={cssProps({
-                    transitionDelay: numToMs(
-                      Number(msToNum(tokens.base.durationS)) + index * 50
-                    ),
-                  })}
-                >
-                  {label}
-                
+              <Link
+                href={pathname}
+                scroll={false}
+                key={label}
+                className={styles.mobileNavLink}
+                data-visible={visible}
+                aria-current={getCurrent(pathname)}
+                onClick={handleMobileNavClick}
+                style={cssProps({
+                  transitionDelay: numToMs(
+                    Number(msToNum(tokens.base.durationS)) + index * 50
+                  ),
+                })}
+              >
+                {label}
               </Link>
             ))}
             <NavbarIcons />

@@ -1,18 +1,17 @@
-import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
-
 import { Button } from 'components/Button';
 import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
 import { Heading } from 'components/Heading';
 import { Image } from 'components/Image';
-import { Link2 } from 'components/Link';
+
 import { Section } from 'components/Section';
 import { Text } from 'components/Text';
 import { Transition } from 'components/Transition';
 import { Fragment, useState } from 'react';
 import { media } from 'utils/style';
 import styles from './Profile.module.css';
-import myImage from 'assets/mayank.jpg';
+import myImage from 'assets/new/profile/perfil_large.jpeg';
+import Link from 'next/link';
 
 const ProfileText = ({ visible, titleId }) => (
   <Fragment>
@@ -20,25 +19,17 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&apos;m Mayank, currently enrolled at{' '}
-      <Link2 href="https://kiit.ac.in">KIIT University</Link2> to pursue an engineering
-      degree in Information Technology. My area of expertise in web development is the
-      MERN stack. As a self-taught developer, I&apos;m constantly searching for ways to
-      improve. I pick things up quickly, and I&apos;m constantly eager to learn something
-      new. I work well in teams and am constantly willing to lend a hand. In addition to
-      this, I am a <b>Content Writer/Marketer</b> as well.
+      I&apos;m Mayank, currently enrolled at Olá. Me chamo Victor, atualmente moro em João
+      Pessoa e trabalho como Analista de Sistemas no{' '}
+      <Link href="https://der.pb.gov.br">DERPB</Link>. Meus projetos incluem
+      desenvolvimento web e integrações em nuvem. Estar confortável com o código me
+      permite prototipar e validar experiências rapidamente. Se você estiver interessado
+      nas ferramentas e softwares que uso, confira alguns de{' '}
+      <Link href="/#project-1">meus projetos</Link>.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I am a member of the{' '}
-      <Link2 href="https://msckiit.tech">
-        Microsoft Learn Student Ambassadors, KIIT Chapter
-      </Link2>{' '}
-      as a{' '}
-      <span style={{ fontWeight: 'bold' }}>Creative Lead and Operations Executive</span>{' '}
-      and <span style={{ fontWeight: 'bold' }}>Senior Executive</span> at the{' '}
-      <Link2 href="https://ecell.org.in">KIIT Entrepreneurship Cell</Link2>. I&apos;ve
-      helped organised several events having a cumulative footfall of more than 3000+
-      people, and have the experience of managing a team of 100+ members as well.
+      No meu tempo livre, gosto de jogar videogames e viajar. Estou sempre aberto a ouvir
+      sobre novos projetos, então sinta-se à vontade para me mandar uma mensagem.
     </Text>
   </Fragment>
 );
@@ -89,7 +80,6 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 <Image
                   reveal
                   delay={100}
-                  placeholder={profileImgPlaceholder}
                   srcSet={[myImage, myImage]}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
                   alt="Me standing in front of the Torii on Miyajima, an island off the coast of Hiroshima in Japan"

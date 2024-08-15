@@ -1,24 +1,23 @@
-import gamestackTexture2Placeholder from 'assets/gamestack-list-placeholder.jpg';
+import derosTextureLarge from 'assets/new/deros.png1600x2560.png';
+import derosTexturePlaceholder from 'assets/new/deros.png20x32.png';
+import derosTexture from 'assets/new/deros.png800x1280.png';
+import eventCredentialsLarge from 'assets/new/event_credentials.png__1320x520.png';
+import eventCredentials from 'assets/new/event_credentials.png__660x260.png';
+import eventCredentialsPlaceholder from 'assets/new/event_credentials.png_placeholder_33x13.png';
+import pontoSimTextureLarge from 'assets/new/projects/pontosim/pontosim02.png1600x2560.png';
+import pontoSimTexturePlaceholder from 'assets/new/projects/pontosim/pontosim02.png20x32.png';
+import pontoSimTexture from 'assets/new/projects/pontosim/pontosim02.png800x1280.png';
 
-import gamestackTexturePlaceholder from 'assets/gamestack-login-placeholder.jpg';
+import eventCredentials2 from 'assets/new/event_credentials2.png__660x260.png';
+import eventCredentialsLarge2 from 'assets/new/event_credentials2.png_large_1320x520.png';
+import eventCredentialsPlaceholder2 from 'assets/new/event_credentials2.png_placeholder_33x13.png';
 
-import sliceTexturePlaceholder from 'assets/slice-app-placeholder.jpg';
-
-import sprTexturePlaceholder from 'assets/spr-lesson-builder-dark-placeholder.jpg';
-
-import hmsPreview from 'assets/hms-preview.png';
-import cicd from 'assets/cicd.png';
-import algoVE from 'assets/algo-ve-preview.png';
-import blockchain from 'assets/blockchain.png';
-import algoVE2 from 'assets/algoVE2.png';
-import stockDash from 'assets/stock-dashboard.png';
-import stockDash2 from 'assets/stockDash2.png';
 import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
 import { Profile } from 'layouts/Home/Profile';
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 
 const disciplines = ['Student', 'Learner'];
@@ -30,11 +29,11 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
-  const projectFour = useRef();
+  // const projectFour = useRef();
   const details = useRef();
 
   useLayoutEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -70,7 +69,7 @@ export const Home = () => {
   }, [visibleSections]);
 
   return (
-    <div className={styles.home} >
+    <div className={styles.home}>
       <Meta
         title="Designer + Developer"
         description="Design portfolio of Mayank Jain — a product designer working on web & mobile
@@ -82,43 +81,50 @@ export const Home = () => {
         disciplines={disciplines}
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
+
       <ProjectSummary
         id="project-1"
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Hostel Management System"
-        description="A platform for students to address all their hostel issues with their hostel warden"
+        title="Sistema de ponto Eletrônico"
+        description="Desenvolvimento de uma aplicação para controle de ponto eletrônico. Foi construído para controlar o ponto dos funcionários da empresa."
         buttonText="View project"
-        buttonLink="https://github.com/mayankjain25/Hostel-Management-System"
+        buttonLink="projects/pontosim"
         model={{
           type: 'laptop',
-          alt: 'Displaying the home page of the website.',
+          alt: 'Smart Sparrow lesson builder',
+
           textures: [
             {
-              srcSet: [hmsPreview, hmsPreview],
-              placeholder: sprTexturePlaceholder,
+              srcSet: [pontoSimTexture],
+              placeholder: pontoSimTexturePlaceholder,
             },
           ],
         }}
       />
       <ProjectSummary
         id="project-2"
-        // alternate
+        alternate
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Blockchain Based FIR Registration System"
-        description="A blockchain based FIR registration system to ensure transparency and security of the data to facilitate and safeguard the interests of the victim."
-        buttonText="Visit repository"
-        buttonLink="https://github.com/mayankjain25/Blockchain-Based-FIR-System"
+        title="Event credentials"
+        description="Development of a web app for event credentials. It is used to control the credentials of the event. "
+        buttonText="View project"
+        buttonLink="/projects/pass-in-web"
         model={{
-          type: 'laptop',
-          alt: 'landing page',
+          type: 'phone',
+          alt: 'Smart Sparrow lesson builder',
+
           textures: [
             {
-              srcSet: [blockchain],
-              placeholder: gamestackTexturePlaceholder,
+              srcSet: [eventCredentials],
+              placeholder: eventCredentialsPlaceholder,
+            },
+            {
+              srcSet: [eventCredentials2],
+              placeholder: eventCredentialsPlaceholder2,
             },
           ],
         }}
@@ -128,22 +134,22 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="CI/CD Pipeline using Jenkins and Docker"
-        description="his is a basic starter website that was built incorporating a CI/CD Pipeline involving GitHub Webhooks and Jenkins. Every push is deployed via an nginx docker container"
+        title="IT Service control"
+        description="Development of a web app for service control. It is used to control the it services of the company like the servers, the computers, the network and the services. "
         buttonText="View project"
-        buttonLink="https://github.com/mayankjain25/Microo-Starter-Website"
+        buttonLink="projects/sosystem"
         model={{
           type: 'laptop',
-          alt: 'Visual description of the pipeline workflow',
+          alt: 'deros app',
           textures: [
             {
-              srcSet: [cicd],
-              placeholder: sliceTexturePlaceholder,
+              srcSet: [derosTexture],
+              placeholder: derosTexturePlaceholder,
             },
           ],
         }}
       />
-      <ProjectSummary
+      {/* <ProjectSummary
         id="project-4"
         alternate
         sectionRef={projectFour}
@@ -167,7 +173,7 @@ export const Home = () => {
             },
           ],
         }}
-      />
+      /> */}
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}

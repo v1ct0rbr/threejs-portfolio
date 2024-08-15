@@ -1,10 +1,4 @@
 import { Fragment } from 'react';
-import sliceAppPlaceholder from 'assets/slice-app-placeholder.jpg';
-import sliceBackgroundPlaceholder from 'assets/slice-background-placeholder.jpg';
-import sliceBackground from 'assets/slice-background.jpg';
-import sliceSidebarAnnotationsPlaceholder from 'assets/slice-sidebar-annotations-placeholder.png';
-import sliceSidebarLayersPlaceholder from 'assets/slice-sidebar-layers-placeholder.png';
-import sliceSlidesPlaceholder from 'assets/slice-slides-placeholder.jpg';
 
 import pontoSimApp from 'assets/new/projects/pontosim/pontosim_app_image.png';
 import pontosimBackground from 'assets/new/projects/pontosim/pontosim_background.png';
@@ -31,12 +25,11 @@ import {
 import { media } from 'utils/style';
 import styles from './pontosim.module.css';
 
-
 const title = 'Sistema de ponto eletrônico';
 const description =
   'Com uma interface intuitiva, o sistema facilita a marcação de entradas e saídas, automatiza cálculos de horas trabalhadas, \
   e gera relatórios detalhados para a gestão. Além disso, oferece integração com outros sistemas de RH, suporte a múltiplos dispositivos,\
-   e funcionalidades avançadas como a geolocalização e o reconhecimento facial, garantindo segurança e conformidade com as regulamentações trabalhistas.';
+   e funcionalidades avançadas como a geolocalização e validação com duplo fator de autenticação.';
 const roles = [
   'Employee attendance control',
   'Location validation',
@@ -57,7 +50,6 @@ export const PontoSim = () => {
           srcSet={`${pontosimBackground} 1280w, ${pontosimBackground} 2560w`}
           width={1280}
           height={800}
-          placeholder={sliceBackgroundPlaceholder}
           opacity={0.8}
         />
         <ProjectHeader
@@ -73,7 +65,6 @@ export const PontoSim = () => {
               srcSet={`${pontoSimApp} 800w, ${pontosimBackground} 1920w`}
               width={800}
               height={500}
-              placeholder={sliceAppPlaceholder}
               alt="Sistema de ponto eletrônico"
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 90vw, 80vw`}
             />
@@ -119,7 +110,6 @@ export const PontoSim = () => {
                 srcSet={`${pontoSimMobile01} 350w, ${pontoSimMobile01} 700w`}
                 width={350}
                 height={750}
-                placeholder={sliceSidebarLayersPlaceholder}
                 alt="The layers sidebar design, now with user profiles."
                 sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
               />
@@ -129,7 +119,6 @@ export const PontoSim = () => {
                 srcSet={`${pontoSimMobile02} 350w, ${pontoSimMobile02} 700w`}
                 width={350}
                 height={750}
-                placeholder={sliceSidebarAnnotationsPlaceholder}
                 alt="Multiple user annotations on a shared layer."
                 sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
               />
@@ -159,11 +148,9 @@ export const PontoSim = () => {
               srcSet={`${pontoSimApp2} 800w, ${pontoSimApp2} 1920w`}
               width={800}
               height={500}
-              placeholder={sliceSlidesPlaceholder}
               alt="The new My Slides tab in slice, showing annotated and favorited slides."
               sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
-           
           </ProjectSectionContent>
         </ProjectSection>
       </ProjectContainer>

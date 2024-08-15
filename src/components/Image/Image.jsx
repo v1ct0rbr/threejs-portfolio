@@ -1,14 +1,14 @@
-import { useReducedMotion } from 'framer-motion';
-import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { Button } from 'components/Button';
 import { Icon } from 'components/Icon';
+import { useReducedMotion } from 'framer-motion';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 
 import { useHasMounted, useInViewport } from 'hooks';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { resolveSrcFromSrcSet, srcSetToString } from 'utils/image';
 import { classes, cssProps, numToMs } from 'utils/style';
-import { MySkeleton} from '../skeleton/MySkeleton';
-import styles from './image.module.css';
-import 'react-loading-skeleton/dist/skeleton.css';
+import { MySkeleton } from '../skeleton/MySkeleton';
+import styles from './Image.module.css';
 
 export const Image = ({
   className,
@@ -18,7 +18,7 @@ export const Image = ({
   raised,
   src: baseSrc,
   srcSet,
-  
+
   ...rest
 }) => {
   const [loaded, setLoaded] = useState(false);
@@ -29,7 +29,6 @@ export const Image = ({
 
   const onLoad = useCallback(() => {
     setLoaded(true);
-    
   }, []);
 
   return (
@@ -38,7 +37,6 @@ export const Image = ({
       data-visible={inViewport || loaded}
       data-reveal={reveal}
       data-raised={raised}
-      
       style={cssProps({ delay: numToMs(delay) }, style)}
       ref={containerRef}
     >
@@ -50,7 +48,6 @@ export const Image = ({
         reveal={reveal}
         src={src}
         srcSet={srcSet}
-        
         {...rest}
       />
     </div>
@@ -151,7 +148,6 @@ const ImageElements = ({
       data-visible={inViewport || loaded}
       style={cssProps({ delay: numToMs(delay + 1000) })}
     >
-      
       {isVideo && hasMounted && (
         <Fragment>
           <video
@@ -166,8 +162,11 @@ const ImageElements = ({
             src={videoSrc}
             aria-label={alt}
             ref={videoRef}
-            style={{display: 'none'}}
-            onLoadedData={(e) => { setShowPlaceholder(false); e.currentTarget.style.display = 'block';}}
+            style={{ display: 'none' }}
+            onLoadedData={e => {
+              setShowPlaceholder(false);
+              e.currentTarget.style.display = 'block';
+            }}
             {...rest}
           />
           {!noPauseButton && (
@@ -179,7 +178,7 @@ const ImageElements = ({
         </Fragment>
       )}
       {showPlaceholder && (
-         /*  <img
+        /*  <img
            aria-hidden
            className={styles.placeholder}
            data-loaded={loaded}
@@ -195,10 +194,10 @@ const ImageElements = ({
            alt=""
            role="presentation"
          />  */
-       
-         <MySkeleton ref={placeholderRef} styles={styles.placeholder}   />
+
+        <MySkeleton ref={placeholderRef} styles={styles.placeholder} />
       )}
-      
+
       {!isVideo && (
         <img
           className={styles.element}
@@ -214,22 +213,13 @@ const ImageElements = ({
           sizes={sizes}
           loading="lazy"
           onTransitionEnd={() => setShowPlaceholder(false)}
-          onLoad={(e) => {
+          onLoad={e => {
             onLoad(e); // Chamando onLoad original se existir
             setShowPlaceholder(false);
           }}
-          
-          
           {...rest}
         />
-        
       )}
-        
-        
-      
-     
-      
-
     </div>
   );
 };
@@ -237,4 +227,3 @@ const ImageElements = ({
 function getIsVideo(src) {
   return typeof src === 'string' && src.includes('.mp4');
 }
-

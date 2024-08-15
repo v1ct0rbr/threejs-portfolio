@@ -101,7 +101,14 @@ export const Contact = () => {
               data-status={status}
               style={getDelay(tokens.base.durationXS, initDelay, 0.4)}
             />
-            <Input
+            <iframe
+              className={styles.chat}
+              src="https://tawk.to/chat/5cad4273557d5f68515bc940/default"
+              width="100%"
+              height="600"
+              title="chat"
+            ></iframe>
+            {/* <Input
               required
               className={styles.input}
               data-status={status}
@@ -124,7 +131,7 @@ export const Contact = () => {
               name="message"
               maxLength={4096}
               {...message}
-            />
+            /> */}
             {/* <Transition in={statusError} timeout={msToNum(tokens.base.durationM)}>
               {errorStatus => (
                 <div
@@ -143,7 +150,7 @@ export const Contact = () => {
                 </div>
               )}
             </Transition> */}
-            <Button
+            {/* <Button
               className={styles.button}
               data-status={status}
               data-sending={sending}
@@ -155,7 +162,7 @@ export const Contact = () => {
               type="submit"
             >
               Send message
-            </Button>
+            </Button> */}
           </form>
         )}
       </Transition>

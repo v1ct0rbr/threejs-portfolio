@@ -33,7 +33,7 @@ export function ProjectHeader({
           <Text className={styles.description} size="xl" as="p">
             {description}
           </Text>
-          {!!url && (
+          {/* {!!url && (
             <Button
               secondary
               iconHoverShift
@@ -43,7 +43,7 @@ export function ProjectHeader({
             >
               {linkLabel}
             </Button>
-          )}
+          )} */}
         </div>
         {!!roles?.length && (
           <ul className={styles.meta}>

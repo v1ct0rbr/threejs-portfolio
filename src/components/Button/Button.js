@@ -5,7 +5,6 @@ import { Transition } from 'components/Transition';
 import { forwardRef } from 'react';
 import { classes } from 'utils/style';
 import styles from './Button.module.css';
-import Link from 'next/link';
 
 function isExternalLink(href) {
   return href?.includes('://');
@@ -17,9 +16,10 @@ export const Button = forwardRef(({ href, ...rest }, ref) => {
   }
 
   return (
-    <Link passHref href={href} scroll={false}>
-      <ButtonContent href={href} ref={ref} {...rest} />
-    </Link>
+    <ButtonContent href={href} ref={ref} {...rest} />
+    // <Link passHref href={href} scroll={false}>
+    //   <ButtonContent href={href} ref={ref} {...rest} />
+    // </Link>
   );
 });
 
