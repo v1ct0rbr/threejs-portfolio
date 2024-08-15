@@ -146,7 +146,7 @@ export const Navbar = () => {
         scroll={false}
         data-navbar-item
         className={styles.logo}
-        aria-label="Mayank Jain, Designer"
+        aria-label="Victor Queiroga, Cloud Especialist"
         onClick={handleMobileNavClick}
       >
         <Monogram highlight />

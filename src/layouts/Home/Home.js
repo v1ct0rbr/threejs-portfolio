@@ -1,15 +1,14 @@
-import derosTextureLarge from 'assets/new/deros.png1600x2560.png';
 import derosTexturePlaceholder from 'assets/new/deros.png20x32.png';
 import derosTexture from 'assets/new/deros.png800x1280.png';
-import eventCredentialsLarge from 'assets/new/event_credentials.png__1320x520.png';
+
 import eventCredentials from 'assets/new/event_credentials.png__660x260.png';
 import eventCredentialsPlaceholder from 'assets/new/event_credentials.png_placeholder_33x13.png';
-import pontoSimTextureLarge from 'assets/new/projects/pontosim/pontosim02.png1600x2560.png';
+
 import pontoSimTexturePlaceholder from 'assets/new/projects/pontosim/pontosim02.png20x32.png';
 import pontoSimTexture from 'assets/new/projects/pontosim/pontosim02.png800x1280.png';
 
 import eventCredentials2 from 'assets/new/event_credentials2.png__660x260.png';
-import eventCredentialsLarge2 from 'assets/new/event_credentials2.png_large_1320x520.png';
+
 import eventCredentialsPlaceholder2 from 'assets/new/event_credentials2.png_placeholder_33x13.png';
 
 import { Footer } from 'components/Footer';
@@ -17,10 +16,10 @@ import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
 import { Profile } from 'layouts/Home/Profile';
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 
-const disciplines = ['Student', 'Learner'];
+const disciplines = ['Developer', 'Eternal Learner'];
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
@@ -32,7 +31,7 @@ export const Home = () => {
   // const projectFour = useRef();
   const details = useRef();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const sections = [intro, projectOne, projectTwo, projectThree, details];
 
     const sectionObserver = new IntersectionObserver(
@@ -71,9 +70,8 @@ export const Home = () => {
   return (
     <div className={styles.home}>
       <Meta
-        title="Designer + Developer"
-        description="Design portfolio of Mayank Jain — a product designer working on web & mobile
-          apps with a focus on motion, experience design, and accessibility."
+        title="Cloud Especialist + Developer"
+        description={`Design portfolio of Victor Queiroga — a System Analist working on web, mobile apps and cloud.`}
       />
       <Intro
         id="intro"

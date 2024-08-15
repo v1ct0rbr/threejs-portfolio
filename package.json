@@ -1,8 +1,8 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "Portfolio site for Mayank Jain",
-  "author": "Mayank Jain <jainmayank2509@gmail.com>",
+  "description": "Portfolio site for Victor Queiroga",
+  "author": "Victor Queiroga <contato@victorqueiroga.com>",
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.9.0",
     "@storybook/addon-a11y": "^6.5.10",
@@ -51,6 +51,7 @@
     "react-dom": "^18.2.0",
     "react-loading-skeleton": "^3.4.0",
     "serverless-http": "^3.0.2",
+    "sharp": "^0.33.4",
     "three": "^0.146.0",
     "three-stdlib": "^2.18.1"
   },
