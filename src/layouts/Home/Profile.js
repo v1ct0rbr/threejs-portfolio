@@ -16,10 +16,10 @@ import Link from 'next/link';
 const ProfileText = ({ visible, titleId }) => (
   <Fragment>
     <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
-      <DecoderText text="Hi there" start={visible} delay={500} />
+      <DecoderText text="Hello there!!" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&apos;m Mayank, currently enrolled at Olá. Me chamo Victor, atualmente moro em João
+      Olá. Me chamo Victor, atualmente moro em João
       Pessoa e trabalho como Analista de Sistemas no{' '}
       <Link href="https://der.pb.gov.br">DERPB</Link>. Meus projetos incluem
       desenvolvimento web e integrações em nuvem. Estar confortável com o código me
